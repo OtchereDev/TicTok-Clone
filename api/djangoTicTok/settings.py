@@ -37,6 +37,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # third party apps
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'phonenumber_field',
+
+    #own apps
+    'users',
+    'comments',
+    'likes',
+    'post',
+    'hashtags'
 ]
 
 MIDDLEWARE = [
@@ -117,7 +129,32 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [
+    BASE_DIR/'static'
+]
+
+STATIC_ROOT = BASE_DIR/'static_root'
+
+MEDIA_URL='media/'
+
+MEDIA_ROOT= BASE_DIR/'media'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# RESTFRAMEWORK SETTING
+REST_FRAMEWORK = {
+ 
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+     
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+ 
+}
+
+
+# CUSTOM AUTH MODEL
+AUTH_USER_MODEL = 'users.User'
